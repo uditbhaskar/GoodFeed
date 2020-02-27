@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "67319120231",
+    "firebase_url": "https://goodfeed-80c4a.firebaseio.com",
+    "project_id": "goodfeed-80c4a",
+    "storage_bucket": "goodfeed-80c4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:67319120231:android:2d3adcedeb70507b306fc2",
+        "android_client_info": {
+          "package_name": "com.example.goodfeed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "67319120231-6ampbp1sr5kanmvglbo343bt1o7n7i46.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.goodfeed",
+            "certificate_hash": "1260421f44e8231eece5cc9fe81113ba6c6cc1f0"
+          }
+        },
+        {
+          "client_id": "67319120231-llu2v576is18ot5af514olrdpe01rvc6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQmlzvGvQGhHmJ6zeVdEtBlCV9CqzWMiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "67319120231-llu2v576is18ot5af514olrdpe01rvc6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

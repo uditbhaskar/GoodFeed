@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FeedActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/introLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="70"
+            android:background="@drawable/circular_background">
+
+            <EditText
+                android:id="@+id/userId"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="170dp"
+                android:background="@drawable/backgound"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:gravity="center"
+                android:hint="@string/enter_userId"
+                android:inputType="text"
+                android:padding="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageButton
+                android:id="@+id/showFeedButton"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:background="@drawable/backgound"
+                android:layout_below="@+id/userId"
+                android:layout_margin="20dp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_sent"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:visibility="gone"
+        android:id="@+id/addPostButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_add_black_24dp"
+        app:backgroundTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@android:color/white" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
