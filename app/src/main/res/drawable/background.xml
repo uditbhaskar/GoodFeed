@@ -4,8 +4,15 @@
         android:width="1dp"
         android:color="@color/colorPrimary" />
     <corners
-        android:radius="0dp"
+        android:radius="20dp"
         />
+    <solid
+        android:color="@color/colorPrimary"
+        />
+
+
+
+
 
 
 

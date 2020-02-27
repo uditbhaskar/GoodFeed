@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3E435B</color>
     <color name="colorPrimaryDark">#3E435B</color>
     <color name="colorAccent">#3E435B</color>
-    <color name="white">#ffffff</color>
+    <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="cursor">#FFFFFF</color>
 </resources>
