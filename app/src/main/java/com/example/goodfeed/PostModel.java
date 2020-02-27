@@ -1,16 +1,16 @@
 package com.example.goodfeed;
 
 public class PostModel {
-    private String postImage;
+    private String userId;
     private String postTitle;
-    private String postUrl;
+    private String postImageUrl;
 
-    public String getPostImage() {
-        return postImage;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setPostImage(String postImage) {
-        this.postImage = postImage;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getPostTitle() {
@@ -21,11 +21,11 @@ public class PostModel {
         this.postTitle = postTitle;
     }
 
-    public String getPostUrl() {
-        return postUrl;
+    public String getPostImageUrl() {
+        return postImageUrl;
     }
 
     public void setPostUrl(String postUrl) {
-        this.postUrl = postUrl;
+        this.postImageUrl = postImageUrl;
     }
 }

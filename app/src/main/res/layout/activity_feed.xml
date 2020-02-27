@@ -8,6 +8,7 @@
 
 
     <LinearLayout
+        android:id="@+id/introLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -40,19 +41,17 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/showFeedButton"
                 android:layout_width="300dp"
                 android:layout_height="45dp"
-                android:background="@drawable/backgound"
                 android:layout_below="@+id/userId"
-                android:layout_margin="20dp"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_sent"
-                />
+                android:layout_margin="20dp"
+                android:background="@drawable/backgound"
+                android:src="@drawable/ic_sent" />
         </RelativeLayout>
     </LinearLayout>
 
@@ -69,13 +68,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:visibility="gone"
+
         android:id="@+id/addPostButton"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_margin="20dp"
         android:foregroundGravity="center"
         android:src="@drawable/ic_add_black_24dp"
+        android:visibility="gone"
         app:backgroundTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
