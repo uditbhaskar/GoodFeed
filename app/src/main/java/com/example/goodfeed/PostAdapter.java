@@ -47,6 +47,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         }
 
         if (postModel.getUserId() == userId) {
+            holder.userIdView.setVisibility(View.VISIBLE);
+            holder.userIdView.setText(userId);
+
             holder.edit.setVisibility(View.VISIBLE);
             holder.edit.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,6 +79,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
         ImageView edit;
         ImageView delete;
         TextView postText;
+        TextView userIdView;
 
         public PostHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +87,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
             edit = itemView.findViewById(R.id.edit);
             delete = itemView.findViewById(R.id.delete);
             postText = itemView.findViewById(R.id.post_title);
+            userIdView=itemView.findViewById(R.id.userIdView);
 
         }
     }

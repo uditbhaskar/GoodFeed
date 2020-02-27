@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="16dp"
-    android:elevation="10dp"
+    android:elevation="15dp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -17,6 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:elevation="3dp"
             android:orientation="horizontal">
 
             <ImageView
@@ -38,14 +39,26 @@
 
         </LinearLayout>
 
+        <TextView
+            android:id="@+id/userIdView"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="sans-serif-thin"
+            android:padding="3dp"
+            android:text="User 1"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
         <ImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:layout_marginTop="5dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@color/colorPrimaryDark"
-            android:visibility="gone" />
+            android:visibility="gone"/>
 
         <TextView
             android:id="@+id/post_title"
@@ -54,7 +67,7 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:ellipsize="end"
-            android:maxLines="2"
+            android:maxLength="50"
             android:text="This is our post title ,so gooooood is that ,man!">
 
         </TextView>

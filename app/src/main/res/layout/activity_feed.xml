@@ -24,8 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="90"
-            android:background="@drawable/circular_background"
-            >
+            android:background="@drawable/circular_background">
 
             <TextView
                 android:id="@+id/backgroundImage"
@@ -35,31 +34,32 @@
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@id/userId"
-                android:text="WELCOME BACK!"
                 android:fontFamily="sans-serif-medium"
-                android:textStyle="bold"
+                android:padding="30dp"
+                android:text="WELCOME BACK!"
                 android:textSize="70sp"
-                android:padding="30dp"/>
+                android:textStyle="bold" />
 
             <EditText
-                android:elevation="10dp"
                 android:id="@+id/userId"
                 android:layout_width="330dp"
                 android:layout_height="55dp"
-                android:layout_centerHorizontal="true"
                 android:layout_below="@id/backgroundImage"
-                android:background="@drawable/background"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="35dp"
+                android:background="@drawable/background"
                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+                android:elevation="10dp"
                 android:gravity="center"
                 android:hint="@string/enter_userId"
                 android:inputType="text"
+                android:maxLength="15"
+                android:maxLines="1"
                 android:padding="5dp"
                 android:textColor="@color/white"
                 android:textColorHint="#A9A9C9"
                 android:textCursorDrawable="@color/cursor"
-                android:textSize="17sp"
-                />
+                android:textSize="19sp" />
 
 
         </RelativeLayout>
