@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,7 +26,7 @@ public class UpdateBottomSheetFragment extends BottomSheetDialogFragment {
     TextView tv_userId;
     EditText et_postImage;
     EditText et_postTitle;
-    FloatingActionButton btn_addPostButton;
+    Button btn_addPostButton;
     private Context context;
     private User data;
     private boolean isUpdating = false;
@@ -53,7 +54,7 @@ public class UpdateBottomSheetFragment extends BottomSheetDialogFragment {
             et_postImage.setFocusable(false);
             et_postImage.setBackground(ContextCompat.getDrawable(context, R.drawable.disabled_bg));
             et_postImage.setTextColor(ContextCompat.getColor(context, R.color.disabled));
-
+            btn_addPostButton.setText("Update");
             et_postTitle.setText(data.getUserPost().getText());
         }
         btn_addPostButton.setOnClickListener(new View.OnClickListener() {

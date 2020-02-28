@@ -3,6 +3,7 @@ package com.example.goodfeed;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +13,6 @@ import com.example.goodfeed.firebase.FirebaseInstance;
 import com.example.goodfeed.firebase.User;
 import com.example.goodfeed.firebase.UserPost;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 
 public class PostsActivity extends AppCompatActivity implements FirebaseInstance.MyCallback {
@@ -22,6 +22,7 @@ public class PostsActivity extends AppCompatActivity implements FirebaseInstance
     ProgressBar progressBar;
     FirebaseInstance firebaseInstance;
     PostAdapter postAdapter;
+    ImageView empty_view;
 
 
     @Override
@@ -37,6 +38,7 @@ public class PostsActivity extends AppCompatActivity implements FirebaseInstance
         progressBar = findViewById(R.id.progress_bar);
         recyclerView = findViewById(R.id.recyclerView);
         addPostbutton = findViewById(R.id.addPostButton);
+        empty_view = findViewById(R.id.empty_view);
 
         firebaseInstance = new FirebaseInstance(this);
         fetchPost();
@@ -85,6 +87,14 @@ public class PostsActivity extends AppCompatActivity implements FirebaseInstance
         Log.d("result", userList.toString());
         //Data Fetched
         GloabalData.USER_LIST = userList;
+        if(userList.size()>0) {
+            empty_view.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }
+        else {
+            empty_view.setVisibility(View.VISIBLE);
+        }
+
         progressBar.setVisibility(View.GONE);
         Log.d("check", "called");
         postAdapter.setItems(GloabalData.USER_LIST);

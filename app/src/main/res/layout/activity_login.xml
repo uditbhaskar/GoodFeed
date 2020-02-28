@@ -7,12 +7,19 @@
     tools:context=".LoginActivity">
 
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_login_screen"
+        android:layout_marginBottom="120dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="80dp"
+        />
     <LinearLayout
         android:id="@+id/introLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:weightSum="100"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,61 +30,66 @@
             android:id="@+id/introLayout"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="90"
-            android:background="@drawable/circular_background">
+            android:layout_weight="90">
 
             <TextView
                 android:id="@+id/backgroundImage"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@id/userId"
                 android:fontFamily="sans-serif-medium"
                 android:padding="30dp"
-                android:text="WELCOME BACK!"
-                android:textSize="70sp"
+                android:textColor="@color/colorPrimary"
+                android:text="Welcome Back!"
+                android:textSize="30sp"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/userId"
-                android:layout_width="330dp"
-                android:layout_height="55dp"
-                android:layout_below="@id/backgroundImage"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="35dp"
-                android:background="@drawable/background"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                android:elevation="10dp"
-                android:gravity="center"
-                android:hint="@string/enter_userId"
-                android:inputType="text"
-                android:maxLength="15"
-                android:maxLines="1"
-                android:padding="5dp"
-                android:textColor="@color/white"
-                android:textColorHint="#A9A9C9"
-                android:textCursorDrawable="@color/cursor"
-                android:textSize="19sp" />
-
 
         </RelativeLayout>
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/showFeedButton"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_gravity="end|bottom"
-            android:layout_marginEnd="74dp"
-            android:gravity="center"
-            android:singleLine="true"
-            android:src="@drawable/ic_arrow_forward_black_24dp"
-            app:elevation="20dp"
-            app:fabCustomSize="90dp"
-            app:maxImageSize="50dp"
-            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="bottom"
+            android:padding="20dp"
+            >
+
+            <EditText
+                android:id="@+id/userId"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/activity_create_post_background"
+                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+                android:layout_gravity="center"
+                android:hint="@string/enter_userId"
+                android:inputType="text"
+                android:layout_margin="16dp"
+                android:maxLength="15"
+                android:maxLines="1"
+                android:layout_weight="1"
+                android:padding="12dp"
+                android:textColor="@color/colorPrimary"
+                android:textColorHint="@color/colorPrimary"
+                android:textCursorDrawable="@color/cursor"
+                android:textSize="19sp" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/showFeedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:gravity="center"
+                app:fabCustomSize="50dp"
+                android:singleLine="true"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_arrow_forward_black_24dp"
+                />
+        </LinearLayout>
+
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
