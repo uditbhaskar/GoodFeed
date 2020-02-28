@@ -1,35 +1,48 @@
 package com.example.goodfeed;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.goodfeed.firebase.FirebaseInstance;
 import com.example.goodfeed.firebase.User;
-import com.example.goodfeed.firebase.UserPost;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
-    private List<User> userList;
+    private List<User> userList = new ArrayList<>();
     private Context context;
-    private String userId;
+    private FirebaseInstance.MyCallback listener;
 
-    PostAdapter(Context context, String userId) {
+    PostAdapter(Context context, FirebaseInstance.MyCallback listener) {
         this.context = context;
-        this.userId = userId;
+        this.listener = listener;
     }
 
-    void setItems(List<User> userList) {
+    public void setItems(List<User> userList) {
         this.userList = userList;
+        Log.d("check", "setItems called");
+        Collections.sort(userList, new Comparator<User>() {
+            public int compare(User o1, User o2) {
+                if (o1.getTimeStamp() == null || o2.getTimeStamp() == null)
+                    return 0;
+                return Long.valueOf(o1.getTimeStamp()).compareTo(Long.valueOf(o2.getTimeStamp()));
+            }
+        });
+        Collections.reverse(userList);
         notifyDataSetChanged();
     }
 
@@ -42,42 +55,54 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostHolder holder, int position) {
-        String Id = userList.get(position).getUserId();
-        String timeStamp = userList.get(position).getTimeStamp();
+    public void onBindViewHolder(@NonNull final PostHolder holder, final int position) {
+        String userId = userList.get(position).getUserId();
+        final String timeStamp = userList.get(position).getTimeStamp();
+        final String postTitle = userList.get(position).getUserPost().getText();
+        final String postImage = userList.get(position).getUserPost().getImageUrl();
 
-        UserPost data = userList.get(position).getUserPost();
-        holder.postText.setText(data.text);
+        holder.btn_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                UpdateBottomSheetFragment updateBottomSheetFragment = new UpdateBottomSheetFragment(context, userList.get(position));
+                updateBottomSheetFragment.show(((PostsActivity) context).getSupportFragmentManager(), "edit");
 
-        holder.userId.setText(userId);
-        holder.timeStamp.setText(timeStamp);
+            }
+        });
 
-        if (data.getImageUrl() != null && !data.getImageUrl().isEmpty()) {
-            holder.postImage.setVisibility(View.VISIBLE);
-            String imageUrl = data.getImageUrl();
-            Glide.with(context).load(imageUrl).into(holder.postImage);
-        }
+        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((PostsActivity) context).deletePost(timeStamp);
+            }
+        });
 
-        if (userId.equals(Id)) {
-            holder.userIdView.setVisibility(View.VISIBLE);
-            holder.userIdView.setText(userId);
+        if (userId != null && !userId.isEmpty() && timeStamp != null && !timeStamp.isEmpty()) {
+            if (userId.equals(GloabalData.USER_ID)) {
+                holder.non_user_view_layout.setVisibility(View.VISIBLE);
+                holder.tv_userId.setText(userId);
+                holder.tv_postTitle.setText(postTitle);
 
-            holder.edit.setVisibility(View.VISIBLE);
-            holder.edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //edit();
+                if (postImage != null && !postImage.isEmpty()) {
+                    holder.img_postImage.setVisibility(View.VISIBLE);
+                    Glide.with(context).load(postImage).placeholder(R.drawable.background).into(holder.img_postImage);
+                    holder.btn_delete.setVisibility(View.GONE);
+                } else {
+                    holder.img_postImage.setVisibility(View.GONE);
                 }
-            });
-        }
-        if (userId.equals(Id) && data.getImageUrl() != null && !data.getImageUrl().isEmpty()) {
-            holder.delete.setVisibility(View.VISIBLE);
-            holder.delete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    //delete();
+
+            } else {
+                holder.non_user_view_layout.setVisibility(View.GONE);
+                holder.tv_userId.setText(userId);
+                holder.tv_postTitle.setText(postTitle);
+
+                if (postImage != null && !postImage.isEmpty()) {
+                    holder.img_postImage.setVisibility(View.VISIBLE);
+                    Glide.with(context).load(postImage).placeholder(R.drawable.background).into(holder.img_postImage);
+                } else {
+                    holder.img_postImage.setVisibility(View.GONE);
                 }
-            });
+            }
         }
     }
 
@@ -87,23 +112,23 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
     }
 
     public class PostHolder extends RecyclerView.ViewHolder {
-        ImageView postImage;
-        ImageView edit;
-        ImageView delete;
-        TextView postText;
-        TextView userIdView;
-        TextView userId;
-        TextView timeStamp;
+        ImageView img_postImage;
+        ImageView btn_edit;
+        ImageView btn_delete;
+        TextView tv_postTitle;
+        TextView tv_userId;
+        TextView tv_timeStamp;
+        LinearLayout non_user_view_layout;
 
         public PostHolder(@NonNull View itemView) {
             super(itemView);
-            postImage = itemView.findViewById(R.id.post_image);
-            edit = itemView.findViewById(R.id.edit);
-            delete = itemView.findViewById(R.id.delete);
-            postText = itemView.findViewById(R.id.post_title);
-            userIdView=itemView.findViewById(R.id.userIdView);
-            userId = itemView.findViewById(R.id.tv_userId);
-            timeStamp = itemView.findViewById(R.id.tv_time);
+            img_postImage = itemView.findViewById(R.id.img_post_image);
+            btn_edit = itemView.findViewById(R.id.btn_edit);
+            btn_delete = itemView.findViewById(R.id.btn_delete);
+            tv_postTitle = itemView.findViewById(R.id.tv_post_title);
+            tv_userId = itemView.findViewById(R.id.tv_userId);
+            tv_timeStamp = itemView.findViewById(R.id.tv_time);
+            non_user_view_layout = itemView.findViewById(R.id.non_user_View);
         }
     }
 

@@ -27,7 +27,7 @@ public class FirebaseInstance {
     public void fetchData() {
         userList = new ArrayList<>();
 
-        instance.getReference("users").addValueEventListener(new ValueEventListener() {
+        instance.getReference("users").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {

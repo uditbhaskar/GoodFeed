@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedActivity">
+    tools:context=".LoginActivity">
 
 
     <LinearLayout
@@ -75,32 +75,9 @@
             android:src="@drawable/ic_arrow_forward_black_24dp"
             app:elevation="20dp"
             app:fabCustomSize="90dp"
-            app:maxImageSize="50dp" />
+            app:maxImageSize="50dp"
+            />
     </LinearLayout>
 
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-
-        android:id="@+id/addPostButton"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_margin="20dp"
-        android:foregroundGravity="center"
-        android:src="@drawable/ic_add_black_24dp"
-        android:visibility="gone"
-        app:backgroundTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:tint="@android:color/white" />
-
-<ProgressBar
-    android:id="@+id/progress_bar"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:visibility="invisible"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    />
 </androidx.constraintlayout.widget.ConstraintLayout>

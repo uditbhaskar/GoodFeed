@@ -6,4 +6,6 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="cursor">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="disabled">#595959</color>
 </resources>

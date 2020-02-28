@@ -13,6 +13,13 @@ public class UserPost {
     }
 
     public UserPost(String text, String imageUrl) {
+        if(text==null){
+            text = "";
+        }
+        if(imageUrl==null){
+            imageUrl = "";
+        }
+
         this.text = text;
         this.imageUrl = imageUrl;
     }
