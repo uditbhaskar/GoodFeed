@@ -1,4 +1,4 @@
-package com.example.goodfeed;
+package com.example.goodfeed.view.adapter;
 
 import android.content.Context;
 import android.util.Log;
@@ -13,8 +13,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.goodfeed.firebase.FirebaseInstance;
-import com.example.goodfeed.firebase.User;
+import com.example.goodfeed.GloabalData;
+import com.example.goodfeed.view.ui.PostsActivity;
+import com.example.goodfeed.R;
+import com.example.goodfeed.view.ui.UpdateBottomSheetFragment;
+import com.example.goodfeed.service.model.User;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,11 +28,9 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostHolder> {
 
     private List<User> userList = new ArrayList<>();
     private Context context;
-    private FirebaseInstance.MyCallback listener;
 
-    PostAdapter(Context context, FirebaseInstance.MyCallback listener) {
+    public PostAdapter(Context context) {
         this.context = context;
-        this.listener = listener;
     }
 
     public void setItems(List<User> userList) {

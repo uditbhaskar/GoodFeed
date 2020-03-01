@@ -1,4 +1,4 @@
-package com.example.goodfeed.firebase;
+package com.example.goodfeed.service.model;
 
 import com.google.firebase.database.IgnoreExtraProperties;
 

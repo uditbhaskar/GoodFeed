@@ -1,4 +1,4 @@
-package com.example.goodfeed;
+package com.example.goodfeed.view.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -13,10 +13,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 
-import com.example.goodfeed.firebase.User;
-import com.example.goodfeed.firebase.UserPost;
+import com.example.goodfeed.GloabalData;
+import com.example.goodfeed.R;
+import com.example.goodfeed.service.model.User;
+import com.example.goodfeed.service.model.UserPost;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

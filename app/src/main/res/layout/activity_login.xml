@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".view.ui.LoginActivity">
 
 
     <ImageView
@@ -72,7 +72,7 @@
                 android:padding="12dp"
                 android:textColor="@color/colorPrimary"
                 android:textColorHint="@color/colorPrimary"
-                android:textCursorDrawable="@color/cursor"
+                android:textCursorDrawable="@color/black"
                 android:textSize="19sp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
